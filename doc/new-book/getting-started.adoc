@@ -30,6 +30,7 @@ Before configuring {RouterName}, you should understand how to start the router, 
 // Step 1 for starting the router.
 include::{FragmentDir}/fragment-starting-router-step.adoc[]
 +
+
 [NOTE]
 ====
 You can specify a different configuration file with which to start the router. For more information, see xref:methods-for-changing-router-configuration[_Changing a Router's Configuration_].
