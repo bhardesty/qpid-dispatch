@@ -1,0 +1,88 @@
+////
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License
+////
+
+[id='connecting-other-routers-{context}']
+= Connecting with other routers
+
+If the router is operating in interior mode, you must configure it to connect to other routers (using inter-router _connectors_), or listen for connections from other routers (using inter-router _listeners_), or both.
+
+AMQP connections are bidirectional. To connect two routers, you only need to create a connector on one of the routers. After the connection is established, both routers can communicate over the connection.
+
+// TODO: explain how to decide which direction to make the connection (i.e. more private to more public)
+
+// TODO: redo this procedure: 1. determine direction of connection. 2. create listener. 3. Create connector. 4. Repeat for each additional connection.
+
+.Procedure
+
+. In the router configuration file, if you want other routers to connect to this router, add an inter-router listener.
++
+--
+[options="nowrap",subs="+quotes"]
+----
+listener {
+    host: _<host-name-or-address>_
+    port: _<port-number-or-name>_
+    role: inter-router
+    ...
+}
+----
+
+`host`:: The host name or IP address (IPv4 or IPv6) on which the router should listen for inter-router connections. You can:
++
+** Specify a literal host name or IP address
+** Leave the value blank to listen on all local addresses
+** Use the `[::]` wildcard to listen on all local IPv6 addresses
+** Use the `0.0.0.0` wildcard to listen on all local IPv6 addresses
+
+`port`:: The port number or symbolic service name on which the router should listen for incoming inter-router connections.
+
+`role`:: Enter `inter-router`. This value means that this listener can only accept connections from other routers in the network for inter-router discovery and routing protocols.
+
+To configure advanced attributes, see link:{qdrouterdConfManPageUrl}#_listener[listener^] in the qdrouterd.conf man page.
+--
+
+. If you want to connect this router to another router, add a connector.
++
+--
+The router to which you want to connect must have an inter-router listener.
+
+[options="nowrap",subs="+quotes"]
+----
+connector {
+    host: _<host-name-or-address>_
+    port: _<port-number-or-name>_
+    role: inter-router
+    ...
+}
+----
+
+`host`:: The IP address (IPv4 or IPv6) or host name to which the router should connect. The router to which you want to connect must have an inter-router listener listening on this host.
+
+`port`:: The port number or symbolic service name tn which the router should connect. The router to which you want to connect must have an inter-router listener listening on this port.
+
+`role`:: Enter `inter-router`. This value means that this connector can only connect to other routers in the network.
+
+To configure advanced attributes, see link:{qdrouterdConfManPageUrl}#_connector[connector^] in the qdrouterd.conf man page.
+--
+
+. Repeat Step 2 for each additional router to which you want to connect.
+
+// .Additional resources
+
+// * xref:securing-inter-router-connections-router[]

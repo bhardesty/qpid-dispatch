@@ -1,0 +1,47 @@
+////
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License
+////
+
+[id='setting-router-mode-{context}']
+= Setting the router mode
+
+The router can operate either as a standalone router, or an interior router that is connected to other routers.
+
+.Procedure
+
+. In the router configuration file, in the `router` section, set the ID and mode:
++
+--
+[options="nowrap",subs="+quotes"]
+----
+router {
+    id: _<router-id>_
+    mode: standalone|interior
+}
+----
+`id`:: The unique identifier for the router. This ID will also be the container name at the AMQP protocol level.
+
+`mode`:: Specify one of the following modes:
++
+** `standalone` - Use this mode if the router does not communicate with other routers and is not part of a router network. When operating in this mode, the router only routes messages between directly connected endpoints.
+** `interior` - Use this mode if the router is part of a router network and needs to collaborate with other routers.
+--
+
+. If necessary, configure advanced attributes for the router.
++
+For more information, see link:{qdrouterdConfManPageUrl}#_router[router^] in the qdrouterd.conf man page.

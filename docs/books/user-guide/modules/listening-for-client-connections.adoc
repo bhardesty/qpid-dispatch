@@ -1,0 +1,61 @@
+////
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License
+////
+
+[id='listening-for-client-connections-{context}']
+= Listening for client connections
+
+The router provides _listeners_, which accept client connections. By default, the router listens for client connections on all of the host's network interfaces on the default AMQP port (5672). However, you can change this to add or remove the hosts and ports to which clients can connect.
+
+Clients connect to a router listener the same way they connect to message brokers. From the client's perspective, the router connection and link establishment are identical to broker connection and link establishment.
+
+.Procedure
+
+. In the router configuration file, edit the default `listener` entity:
++
+--
+[options="nowrap",subs="+quotes"]
+----
+listener {
+    host: _<host-name-or-address>_
+    port: _<port-number-or-name>_
+    role: normal
+    ...
+}
+----
+
+`host`:: The host name or IP address (IPv4 or IPv6) on which the router should listen for client connections. You can:
++
+** Specify a literal host name or IP address
+** Leave the value blank to listen on all local addresses
+** Use the `[::]` wildcard to listen on all local IPv6 addresses
+** Use the `0.0.0.0` wildcard to listen on all local IPv6 addresses
+
+`port`:: The port number or symbolic service name on which the router should listen for incoming connections.
+
+`role`:: The `normal` value means that this listener can only accept connections from AMQP clients for normal message delivery.
+--
+
+. If necessary, configure advanced attributes for the listener.
++
+For more information, see link:{qdrouterdConfManPageUrl}#_listener[listener^] in the qdrouterd.conf man page.
+
+// .Additional resources
+
+// * xref:securing-client-connections-with-ssl-tls-router[]
+// * xref:securing-client-connections-with-sasl-router[]

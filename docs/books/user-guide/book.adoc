@@ -35,6 +35,9 @@ include::assemblies/overview.adoc[leveloffset=+1]
 // Getting started
 include::assemblies/getting-started.adoc[leveloffset=+1]
 
+// Deploying a router
+include::assemblies/deploying-router.adoc[leveloffset=+1]
+
 // Configuration
 include::understand-router-configuration.adoc[leveloffset=+1]
 

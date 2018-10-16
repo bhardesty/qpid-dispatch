@@ -1,0 +1,79 @@
+////
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License
+////
+
+// This assembly is included in the following assemblies:
+//
+// deploying-router.adoc
+
+[id='configuring-router-{context}']
+= Configuring the router
+
+You configure the router by editing the router configuration file (`qdrouterd.conf`).
+
+You can configure the following settings:
+
+* Router mode
++
+The router can operate as a standalone router, or an interior router in which it is connected to other routers to form a router network.
+
+* Network connections
++
+The router can listen for client connections and connect to other routers and AMQP containers (such as message brokers).
+
+* Security
++
+You can authenticate and encrypt the router's incoming and outgoing connections. You can also authorize what messaging resources clients are able to access.
+
+* Routing
++
+--
+You can configure how the router should distribute messages for a particular address. The router can:
+
+** Distribute messages between clients directly
+** Distribute messages indirectly through a broker queue
+** Link clients to brokers so that they can exchange messages directly 
+--
+
+* Logging
++
+You can configure how each type of event is logged.
+
+// Understanding the router configuration file
+include::modules/understanding-router-configuration-file.adoc[leveloffset=+1]
+
+// Setting the router mode
+include::modules/setting-router-mode.adoc[leveloffset=+1]
+
+// Listening for client connections
+include::modules/listening-for-client-connections.adoc[leveloffset=+1]
+
+// Connecting to other routers
+include::modules/connecting-other-routers.adoc[leveloffset=+1]
+
+// Securing the router
+
+
+// Authorizing access to messaging resources
+
+
+// Configuring routing
+
+
+// Configuring logging
+

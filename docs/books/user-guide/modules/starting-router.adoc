@@ -17,10 +17,6 @@ specific language governing permissions and limitations
 under the License
 ////
 
-// This assembly is included in the following assemblies:
-//
-// getting-started.adoc
-
 [id='starting-router-{context}']
 = Starting the router
 
