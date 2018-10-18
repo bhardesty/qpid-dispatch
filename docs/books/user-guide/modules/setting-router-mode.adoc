@@ -30,7 +30,7 @@ The router can operate either as a standalone router, or an interior router that
 [options="nowrap",subs="+quotes"]
 ----
 router {
-    id: _<router-id>_
+    id: __<router_id>__
     mode: standalone|interior
 }
 ----

@@ -32,8 +32,8 @@ Clients connect to a router listener the same way they connect to message broker
 [options="nowrap",subs="+quotes"]
 ----
 listener {
-    host: _<host-name-or-address>_
-    port: _<port-number-or-name>_
+    host: __<host_name_or_address>__
+    port: __<port_number_or_name>__
     role: normal
     ...
 }
